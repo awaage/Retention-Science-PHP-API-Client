@@ -1,7 +1,7 @@
 <?php
 include('retention_science_api.php');
-$api_user = "testing";
-$api_pass = "testing";
+$api_user = "test";
+$api_pass = "1234";
 $testmode = true;
 
 $client = new RetentionScienceApi($api_user, $api_pass, $testmode);
