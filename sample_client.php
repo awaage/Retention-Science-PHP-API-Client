@@ -1,13 +1,14 @@
 <?php
 include('retention_science_api.php');
-$api_user = "test";
-$api_pass = "1234";
+$api_user = "testing";
+$api_pass = "testing";
 $testmode = true;
 
 $client = new RetentionScienceApi($api_user, $api_pass, $testmode);
 
 // GET the last user record id 
-echo $client->get_last_user_record_id();
+echo "Last user record id: ";
+echo $client->get_last_user_record_id() . "\n";
 
 // POST a new or existing user
 $user_record_id = 12300;
@@ -32,7 +33,8 @@ $item_array = array("name" => $item_name, "manufacturer" => "Nike", "model" => "
 $client->update_item($item_record_id, $item_array);
 
 // GET the last order record id 
-echo $client->get_last_order_record_id();
+echo "Last order record id: ";
+echo $client->get_last_order_record_id() . "\n";
 
 // POST a new or existing order with order_item
 $order_record_id = 5000;

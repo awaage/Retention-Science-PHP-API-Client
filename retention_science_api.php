@@ -14,7 +14,6 @@ class RetentionScienceApi {
 
 	private $password;
 	private $time_out = 60;
-	private $user_agent;
 	private $username;
 	private $testmode;
 
@@ -52,13 +51,13 @@ class RetentionScienceApi {
 		// set options
 		$options[CURLOPT_URL] = $url;
 		$options[CURLOPT_PORT] = self::API_PORT;
-		$options[CURLOPT_USERAGENT] = $this->get_useragent();
+		$options[CURLOPT_USERAGENT] = $this->get_user_agent();
 		// follow on only if allowed - 20120221
 		if (ini_get('open_basedir') == '' && ini_get('safe_mode' == 'Off')){
 			$options[CURLOPT_FOLLOWLOCATION] = true;
 		}       
 		$options[CURLOPT_RETURNTRANSFER] = true;
-		$options[CURLOPT_TIMEOUT] = (int) $this->get_time_out();
+		$options[CURLOPT_TIMEOUT] = (int) $this->time_out;
 
 		// HTTP basic auth
 		if($authenticate) {
@@ -107,11 +106,8 @@ class RetentionScienceApi {
 	private function get_password(){
 		return (string) $this->password;
 	}
-	public function get_time_out(){
-		return (int) $this->time_out;
-	}
-	public function get_useragent(){
-		return (string) 'Retention Science PHP API Client/'. self::API_VERSION .' '. $this->user_agent;
+	private function get_user_agent(){
+		return (string) 'Retention Science PHP API Client / v'. self::API_VERSION;
 	}
 	private function get_username(){
 		return (string) $this->username;
@@ -127,13 +123,7 @@ class RetentionScienceApi {
 	private function set_password($password){
 		$this->password = (string) $password;
 	}
-	public function set_time_out($seconds){
-		$this->time_out = (int) $seconds;
-	}
-	public function set_user_agent($user_agent){
-		$this->user_agent = (string) $user_agent;
-	}
-	public function set_testmode($testmode){
+	private function set_testmode($testmode){
 		$this->testmode = (boolean) $testmode;
 	}
 
