@@ -39,7 +39,7 @@ echo $client->get_last_order_record_id() . "\n";
 // POST a new or existing order with order_item
 $order_record_id = 5000;
 $order_item_array = array('item_record_id' => $item_record_id, 'name' => $item_name, 'quantity' => 1, 'price' => $item_price, 'final_price' => $item_price, 'categories' => array($category_record_id1, $category_record_id2));
-$order_array = array('user_record_id' => $user_record_id, 'total_price' => "19.99", 'discount_amount' => "", 'ordered_at' => date("D M j G:i:s T Y"), 'payment_method' => 'Credit Card', 'order_items' => array($order_item_array));
+$order_array = array('user_record_id' => $user_record_id, 'total_price' => "19.99", 'discount_amount' => "", 'shipping_amount' => "10.00", 'tax_amount' => "0.00", 'ordered_at' => date("D M j G:i:s T Y"), 'payment_method' => 'Credit Card', 'order_items' => array($order_item_array));
 $client->update_order($order_record_id, $order_array);
 
 
