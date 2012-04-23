@@ -128,6 +128,12 @@ class RetentionScienceApi {
 	}
 
 	/* Users resource */
+	public function user_exists($record_id) {
+		$url = 'users/exists/' . $record_id;
+		$response = $this->perform_call($url, array(), true, false);
+		return ($this->handle_response($response) == 'true');
+	}
+	
 	public function get_last_user_record_id() {
 		$url = 'users/last_record_id';
 		$response = $this->perform_call($url, array(), true, false);

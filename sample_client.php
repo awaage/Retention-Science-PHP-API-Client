@@ -10,6 +10,10 @@ $client = new RetentionScienceApi($api_user, $api_pass, $testmode);
 echo "Last user record id: ";
 echo $client->get_last_user_record_id() . "\n";
 
+// GET if user exists with this record_id
+echo "Does this user 123 exist?";
+echo $client->user_exists('123') . "\n";
+
 // POST a new or existing user
 $user_record_id = 12300;
 $user_array = array('email' => 'johndoe@gmail.com', 'full_name' => "John Doe", 'address1' => "123 Main St", 'city' => "San Diego", 'state' => 'CA', 'zip' => 91311, 'country' => "US", 'phone' => '8882221111', 'birth_year' => '1920', 'gender' => 'm', 'ip_address' => "127.6.6.6", 'number_logons' => 2, 'account_created_on' => date("Y-m-d"), 'last_logon_at' => date("D M j G:i:s T Y"));
