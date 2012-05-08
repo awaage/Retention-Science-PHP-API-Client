@@ -140,6 +140,12 @@ class RetentionScienceApi {
 		return $this->handle_response($response);
 	}
 	
+	public function show_user($record_id) {
+		$url = 'users/show/' . urlencode($record_id);
+		$response = $this->perform_call($url, array(), true, false);
+		return $this->handle_response($response);
+	}
+	
 	// user_array is an assoc. array:
 	// email, full_name, address1, address2, city, state
 	// zip, country, phone, birth_year, gender, ip_address, 
@@ -156,6 +162,13 @@ class RetentionScienceApi {
 		$response = $this->perform_call($url, array(), true, false);
 		return $this->handle_response($response);
 	}
+	
+	public function show_order($record_id) {
+		$url = 'orders/show/' . urlencode($record_id);
+		$response = $this->perform_call($url, array(), true, false);
+		return $this->handle_response($response);
+	}
+	
 	// order_array is an assoc. array:
 	// user_record_id, total_price, discount_amount, ordered_at, payment_method, order_items
 	public function update_order($record_id, $order_array) {
@@ -165,6 +178,11 @@ class RetentionScienceApi {
 	}
 
 	/* Items resource */
+	public function show_item($record_id) {
+		$url = 'items/show/' . urlencode($record_id);
+		$response = $this->perform_call($url, array(), true, false);
+		return $this->handle_response($response);
+	}
 	// item_array is an assoc. array:
 	// name, manufacturer, model, quantity, price,
   // active, image_list, categories
@@ -175,6 +193,11 @@ class RetentionScienceApi {
 	}
 	
 	/* Categories resource */
+	public function show_category($record_id) {
+		$url = 'categories/show/' . urlencode($record_id);
+		$response = $this->perform_call($url, array(), true, false);
+		return $this->handle_response($response);
+	}
 	// category_array is an assoc. array: 
 	// name, description, parent_record_id
 	public function update_category($record_id, $category_array) {
