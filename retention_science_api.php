@@ -143,7 +143,7 @@ class RetentionScienceApi {
 	public function show_user($record_id) {
 		$url = 'users/show/' . urlencode($record_id);
 		$response = $this->perform_call($url, array(), true, false);
-		return $this->handle_response($response);
+		return json_decode($this->handle_response($response), true);
 	}
 	
 	// user_array is an assoc. array:
@@ -166,7 +166,7 @@ class RetentionScienceApi {
 	public function show_order($record_id) {
 		$url = 'orders/show/' . urlencode($record_id);
 		$response = $this->perform_call($url, array(), true, false);
-		return $this->handle_response($response);
+		return json_decode($this->handle_response($response), true);
 	}
 	
 	// order_array is an assoc. array:
@@ -181,7 +181,7 @@ class RetentionScienceApi {
 	public function show_item($record_id) {
 		$url = 'items/show/' . urlencode($record_id);
 		$response = $this->perform_call($url, array(), true, false);
-		return $this->handle_response($response);
+		return json_decode($this->handle_response($response), true);
 	}
 	// item_array is an assoc. array:
 	// name, manufacturer, model, quantity, price,
@@ -196,7 +196,7 @@ class RetentionScienceApi {
 	public function show_category($record_id) {
 		$url = 'categories/show/' . urlencode($record_id);
 		$response = $this->perform_call($url, array(), true, false);
-		return $this->handle_response($response);
+		return json_decode($this->handle_response($response), true);
 	}
 	// category_array is an assoc. array: 
 	// name, description, parent_record_id
