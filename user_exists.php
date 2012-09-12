@@ -12,7 +12,9 @@ echo "Does this user ". $user_record_id . " exist?";
 if ($client->user_exists($user_record_id)){
 	echo "yes";
 	$show = $client->show_user($user_record_id);
-	var_dump($show);
+	echo "Account created on: " . $show['account_created_on'] . "\n";
+
+	//var_dump($show);
 
 } else {
 	echo "no";

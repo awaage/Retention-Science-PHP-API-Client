@@ -134,12 +134,6 @@ class RetentionScienceApi {
 		return ($this->handle_response($response) == 'true');
 	}
 
-	public function show_user($record_id) {
-		$url = 'users/show/' . $record_id;
-		$response = $this->perform_call($url, array(), true, false);
-		return json_decode($this->handle_response($response));
-	}
-
 	public function get_last_user_record_id() {
 		$url = 'users/last_record_id';
 		$response = $this->perform_call($url, array(), true, false);
