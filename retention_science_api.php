@@ -68,7 +68,7 @@ class RetentionScienceApi {
 		// build post params if $use_post
 		if(!empty($params) && $use_post) {
 			$options[CURLOPT_POST] = true;
-			$options[CURLOPT_POSTFIELDS] = http_build_query( $params );
+			$options[CURLOPT_POSTFIELDS] = $params;
 		}
 
 		// curl init
@@ -155,6 +155,13 @@ class RetentionScienceApi {
 		$response = $this->perform_call($url, array('user' => json_encode($user_array)), true, true);
 		return $this->handle_response($response);
 	}
+	public function upload_users_bulk_file($filename){
+		$url = 'users/upload_bulk_file';
+		$response = $this->perform_call($url, array('file_name' => basename($filename),
+			'file' => "@".$filename), true, true);
+		return $this->handle_response($response);
+	}
+
 	
 	/* Orders resource */
 	public function get_last_order_record_id() {
@@ -174,6 +181,12 @@ class RetentionScienceApi {
 	public function update_order($record_id, $order_array) {
 		$url = 'orders/update/' . urlencode($record_id);
 		$response = $this->perform_call($url, array('order' => json_encode($order_array)), true, true);
+		return $this->handle_response($response);
+	}
+	public function upload_orders_bulk_file($filename){
+		$url = 'orders/upload_bulk_file';
+		$response = $this->perform_call($url, array('file_name' => basename($filename), 
+								'file' => "@".$filename), true, true);
 		return $this->handle_response($response);
 	}
 
