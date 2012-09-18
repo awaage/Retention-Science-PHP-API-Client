@@ -204,6 +204,14 @@ class RetentionScienceApi {
 		$response = $this->perform_call($url, array('item' => json_encode($item_array)), true, true);
 		return $this->handle_response($response);
 	}
+	public function upload_items_bulk_file($filename){
+		$url = 'items/upload_bulk_file';
+		$response = $this->perform_call($url, array('file_name' => basename($filename),
+			'file' => "@".$filename), true, true);
+		return $this->handle_response($response);
+	}
+
+
 	
 	/* Categories resource */
 	public function show_category($record_id) {
@@ -218,7 +226,14 @@ class RetentionScienceApi {
 		$response = $this->perform_call($url, array('category' => json_encode($category_array)), true, true);
 		return $this->handle_response($response);
 	}
-	
+	public function upload_categories_bulk_file($filename){
+		$url = 'categories/upload_bulk_file';
+		$response = $this->perform_call($url, array('file_name' => basename($filename),
+			'file' => "@".$filename), true, true);
+		return $this->handle_response($response);
+	}
+
+
 }
 
 
